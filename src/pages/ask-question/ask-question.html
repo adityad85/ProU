@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Ask Your Question</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label color = "primary">Category</ion-label>
+        <ion-select [(ngModel)]="category">
+          <ion-option value="project">Project</ion-option>
+          <ion-option value="academics">Academics</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary" floating>Question Title</ion-label>
+          <ion-input [(ngModel)]="title" type = "text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>Elaborate your Question</ion-label>
+            <ion-textarea [(ngModel)] = "description" rows="6"></ion-textarea>
+          </ion-item>
+          <div style="position:absolute;bottom:0px;width:100%;">
+              <button ion-button color="primary" value="post" (click) = "save()" block>POST</button>
+          </div>
+              
+          
+         
+</ion-content>

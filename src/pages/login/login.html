@@ -1,0 +1,41 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>WELCOME TO PROU</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  
+        <ion-item>
+          <ion-label color="primary" floating >KIET EMAIL</ion-label>
+          <ion-input [(ngModel)] = "email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating >PASSWORD</ion-label>
+            <ion-input [(ngModel)] = "password"></ion-input>
+        </ion-item>
+        
+    
+          <div id="mydiv"></div>
+       
+       <ion-item no-lines> 
+                <button ion-button padding color="secondary" value="login" (click) = "login()" block>LOGIN</button>
+       </ion-item>
+            
+        
+        
+        <div style="position:absolute;bottom:0px;width:100%;">
+            <button ion-button color="secondary" (click) = "gotoSignup()" block>Take Me To SignUp</button>
+            
+        </div>
+        
+           
+      
+        
+
+</ion-content>
