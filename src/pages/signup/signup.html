@@ -1,18 +1,45 @@
-<!--
-  Generated template for the SignupPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>signup</ion-title>
+    <ion-title>Signup to PRO-U</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="signupPage">
+  
+    <form (ngSubmit)="signup()">
+        <ion-item>
+            <ion-label color="primary" floating >Enter Your Name</ion-label>
+            <ion-input [(ngModel)] = "name" type="text" name = "name"></ion-input>
+          </ion-item>
+       <ion-item>
+         <ion-label color="primary" floating >Enter Your Kiet Email</ion-label>
+         <ion-input [(ngModel)] = "email" type="email" name = "email"></ion-input>
+       </ion-item>
+       <ion-item>
+           <ion-label color="primary" floating >Create Your Password</ion-label>
+           <ion-input [(ngModel)] = "password" type="password" name="password"></ion-input>
+       </ion-item>
+       
+   
+         <div id="mydiv"></div>
+      
+      <ion-item no-lines> 
+               <button id="signup" ion-button padding color="secondary" value="signup" type="submit" block>SIGNUP</button>
+      </ion-item>
+      
+         
+   
+   
+           
+     </form>
+       
+      
+          
+     
+       
 
 </ion-content>
+
