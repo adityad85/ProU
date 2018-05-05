@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SignupPage } from '../signup/signup';
+import { AuthProvider } from '../../providers/auth/auth';
+import { TabsPage } from '../tabs/tabs';
 
 
 
@@ -11,26 +12,27 @@ import { SignupPage } from '../signup/signup';
 })
 export class LoginPage {
 
-  email: any;
-  password: any;
+  email: String;
+  password: String;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+    public authProvider:AuthProvider) { 
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad() { 
     console.log('ionViewDidLoad LoginPage');
   }
 
   login(){
-   let user ={
+   let user = {
       email: this.email,
     password: this.password
    };
-
-   console.log(user.email+user.password);
-  }
-  gotoSignup(){
-    this.navCtrl.push(SignupPage);
+   console.log('User has been logged in');
+   console.log(user);
+   this.navCtrl.push(TabsPage);
   }
 
+ 
 }

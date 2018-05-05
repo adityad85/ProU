@@ -7,7 +7,7 @@ var methodOverride = require('method-override'); // simulate DELETE and PUT (exp
 var cors = require('cors');                       //Here is my first comment.
  
 // Configuration
-mongoose.connect('mongodb://localhost:27017/post');
+mongoose.connect('mongodb://localhost:27017/Ques');
  
 app.use(morgan('dev'));                                         // log every request to the console
 app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
 });
  
 // Models
-var Post = mongoose.model('Post', {
+var Ques = mongoose.model('Ques', {
     title: String,
     description: String,
     category: String
@@ -33,46 +33,46 @@ var Post = mongoose.model('Post', {
 // Routes
  
     // Get reviews
-    app.get('/api/posts', function(req, res) {
+    app.get('/getQues', function(req, res) {
  
         console.log("fetching posts");
  
         // use mongoose to get all reviews in the database
-        Post.find(function(err, posts) {
+        Ques.find(function(err, quess) {
  
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err)
                 res.send(err)
  
-            res.json(posts); // return all reviews in JSON format
+            res.json(quess); // return all reviews in JSON format
         });
     });
  
     // create review and send back all reviews after creation
-    app.post('/api/posts', function(req, res) {
+    app.post('/saveQues', function(req, res) {
  
-        console.log("creating posts");
+        console.log("yo");
  
         // create a review, information comes from request from Ionic
-        Post.create({
+        Ques.create({
             title : req.body.title,
             description : req.body.description,
             category: req.body.category,
             done : false
-        }, function(err, post) {
+        }, function(err, ques) {
             if (err)
                 res.send(err);
  
             // get and return all the reviews after you create another
-            Post.find(function(err, posts) {
+            Ques.find(function(err, quess) {
                 if (err)
                     res.send(err)
-                res.json(posts);
+                res.json(quess);
             });
         });
  
     });
- 
+  
  
  
 // listen (start app with node server.js) ======================================

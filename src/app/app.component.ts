@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 
-import { LoginPage } from '../pages/login/login';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { LoginPage } from '../pages/login/login';
 })
 export class MyApp {
 
-  rootPage:any = LoginPage;
+  rootPage:any = WelcomePage;
 
 
 
