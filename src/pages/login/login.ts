@@ -36,17 +36,20 @@ export class LoginPage {
    
    this.authProvider.loginUser(loginUser).subscribe(data => {
      this.xyz = data;
+     console.log(this.xyz);
      if(this.xyz.success){
       window.localStorage.setItem('email', loginUser.email);
       window.localStorage.setItem('password', loginUser.password);
+      window.localStorage.setItem('name', this.xyz.name);
       this.navCtrl.setRoot(TabsPage);
      }else{
+    
        let alert = this.alrtCtrl.create({
         title: 'UNSUCCESSFUL LOGIN',
         subTitle: 'Wrong Email or Password',
         buttons: ['DONE']
        });
-       alert.present();
+       alert.present(); 
      }
    });
   

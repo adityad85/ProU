@@ -36,6 +36,8 @@ export class HomePage {
     this.authProvider.getQues().then((data) => {
      
       this.quess = data;
+      console.log(data);
+
     }); 
   }
 

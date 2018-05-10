@@ -22,10 +22,12 @@ export class AskQuestionPage {
       private authProvider: AuthProvider,
       private atrCtrl: AlertController
     ) {
+     
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AskQuestionPage');
+    console.log(name);
   }
 
   ionViewWillEnter(){
@@ -38,7 +40,8 @@ export class AskQuestionPage {
    let ques = {
      title:this.title,
      description: this.description,
-     category:this.category
+     category:this.category,
+     name: window.localStorage.getItem('name')
    } 
    let alert = this.atrCtrl.create({
     title: 'Success',
@@ -46,7 +49,7 @@ export class AskQuestionPage {
     buttons: ['DONE']
   });
   alert.present();
-
+  
    this.authProvider.saveQuesService(ques); 
 
   
