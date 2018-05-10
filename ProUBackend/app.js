@@ -27,43 +27,48 @@ app.use(function(req, res, next) {
 var Ques = mongoose.model('Ques', {
     title: String,
     description: String,
-    category: String
+    category: String,
+    name: String
 });
+
+var User = mongoose.model('User', {
+    name: String,
+    email: String,
+    password: String
+})
  
-// Routes
- 
-    // Get reviews
+
     app.get('/getQues', function(req, res) {
  
         console.log("fetching posts");
  
-        // use mongoose to get all reviews in the database
+        // use mongoose to get all posts in the database
         Ques.find(function(err, quess) {
  
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err)
                 res.send(err)
  
-            res.json(quess); // return all reviews in JSON format
+            res.json(quess); // return all posts in JSON format
         });
     });
  
-    // create review and send back all reviews after creation
+    // create review and send back all posts after creation
     app.post('/saveQues', function(req, res) {
  
-        console.log("yo");
  
-        // create a review, information comes from request from Ionic
+        // create a posts, information comes from request from Ionic
         Ques.create({
             title : req.body.title,
             description : req.body.description,
             category: req.body.category,
+            name: req.body.name,
             done : false
         }, function(err, ques) {
             if (err)
                 res.send(err);
  
-            // get and return all the reviews after you create another
+            // get and return all the posts after you create another
             Ques.find(function(err, quess) {
                 if (err)
                     res.send(err)
@@ -72,6 +77,44 @@ var Ques = mongoose.model('Ques', {
         });
  
     });
+
+    app.post('/registerUser', function(req, res){
+          console.log(req.body);
+          User.create({
+            name : req.body.name,
+            email : req.body.email,
+            password: req.body.password,
+            done : false
+        }, function(err, user) {
+            if (err)
+                res.send(err);
+           else
+           res.send(user);
+           
+         
+        }); 
+    });
+
+    app.post('/loginUser', function(req, res){
+        const email = req.body.email;
+        const query = {email: email}
+        User.findOne(query, function(err, user){
+            if (err){
+        res.json({success: false, message: 'wrong user email'});
+    }
+            else{
+                if(user.password===req.body.password){
+                    res.json({success: true, message: 'sucessful attempt',name:user.name});
+                    
+                }else{
+                    res.json({success: false, message: 'unsucessful attempt'});
+                }
+                
+            }
+            
+            
+        }); 
+  });
   
  
  

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
  
 @IonicPage()
 @Component({
@@ -10,7 +10,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 export class SignupPage {
 
   name: String;
-  email:String;
+  email:String; 
   password:String;
   constructor(public navCtrl: NavController, public navParams: NavParams,public authProvider:AuthProvider) {
   }
@@ -25,8 +25,7 @@ export class SignupPage {
       email:this.email,
       password:this.password
     }
-    console.log(user.name+' has been registered');
-    console.log(user);
+    this.authProvider.signUp(user);
     this.navCtrl.pop();
     }
 
