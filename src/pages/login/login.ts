@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { TabsPage } from '../tabs/tabs';
-
+import { HomePage } from '../home/home';
+import { AlertController } from 'ionic-angular';
 
 
 @IonicPage()
@@ -12,27 +13,45 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class LoginPage {
 
-  email: String;
-  password: String;
+  email: string;
+  password: string;
+  data: any;
+  xyz: any;
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
-    public authProvider:AuthProvider) { 
+     public authProvider:AuthProvider,
+     public alrtCtrl: AlertController) { 
   }
-
-  ionViewDidLoad() { 
+ 
+  ionViewDidLoad() {  
     console.log('ionViewDidLoad LoginPage');
   }
 
   login(){
-   let user = {
+   let loginUser = {
       email: this.email,
-    password: this.password
+      password: this.password
    };
-   console.log('User has been logged in');
-   console.log(user);
-   this.navCtrl.push(TabsPage);
+   
+   this.authProvider.loginUser(loginUser).subscribe(data => {
+     this.xyz = data;
+     if(this.xyz.success){
+      window.localStorage.setItem('email', loginUser.email);
+      window.localStorage.setItem('password', loginUser.password);
+      this.navCtrl.setRoot(TabsPage);
+     }else{
+       let alert = this.alrtCtrl.create({
+        title: 'UNSUCCESSFUL LOGIN',
+        subTitle: 'Wrong Email or Password',
+        buttons: ['DONE']
+       });
+       alert.present();
+     }
+   });
+  
   }
 
  
 }
+ 
