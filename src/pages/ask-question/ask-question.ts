@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Alert } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Alert ,App} from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AuthProvider } from '../../providers/auth/auth';
 import { AlertController} from 'ionic-angular';
@@ -19,6 +19,7 @@ export class AskQuestionPage {
   constructor(public viewCtrl: ViewController,
       public navCtrl: NavController,
       public navParams: NavParams,
+      public app:App,
       private authProvider: AuthProvider,
       private atrCtrl: AlertController
     ) {
@@ -56,7 +57,7 @@ export class AskQuestionPage {
    this.title = null;
     this.description = null;
     this.category = null;
-
+    this.app.getRootNav().getActiveChildNav().select(0);
   }
  
 
