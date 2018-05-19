@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
 import { AuthProvider} from '../../providers/auth/auth';
+import { QuestionfullPage } from '../questionfull/questionfull';
 
 
 
@@ -22,7 +23,7 @@ export class HomePage {
     this.authProvider.getQues().then((data) => {
      
       this.quess = data;
-      console.log(data);
+    
     });
   
     
@@ -36,7 +37,7 @@ export class HomePage {
     this.authProvider.getQues().then((data) => {
      
       this.quess = data;
-      console.log(data);
+    
 
     }); 
   }
@@ -50,10 +51,9 @@ export class HomePage {
       this.quess = data;
     });
 
+}
 
- 
-
-
-
+cardOpen(ques){
+  this.navCtrl.push(QuestionfullPage,{data: ques});
 }
 }

@@ -10,7 +10,8 @@ import { TabsPage } from '../../pages/tabs/tabs';
  
 @Injectable()
 export class AuthProvider {
-data:any; 
+data:any;
+data1: any; 
 xyz: any;
 userboy: any;
   constructor(public http: HttpClient) {
@@ -55,7 +56,34 @@ getQues(){
           
           
         });
-    });
+    }); 
   }
+
+  addComment(commentObj){
+  
+    let headers = new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:8080/addcomment', commentObj, {headers: headers})
+      .subscribe(data => { 
+        console.log(data);
+      });
+    
+   }
+
+   viewComment(id){
+     let paramID = {
+       postID: id
+     }
+    let headers = new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    return new Promise(resolve => {
+      this.http.post('http://localhost:8080/viewcomment', paramID, {headers: headers})
+      .subscribe(data => {
+      this.data1 = data;
+      resolve(this.data1);
+      });
+    });
+    
+   }
 
 }
