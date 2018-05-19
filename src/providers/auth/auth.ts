@@ -1,10 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
-import { Tab, Tabs } from 'ionic-angular';
-import { TabsPage } from '../../pages/tabs/tabs';
-
-
 
 
  

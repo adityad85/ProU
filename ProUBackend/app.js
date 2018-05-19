@@ -99,12 +99,12 @@ var User = mongoose.model('User', {
         const email = req.body.email;
         const query = {email: email}
         User.findOne(query, function(err, user){
-            if (err){
+            if (user==null){
         res.json({success: false, message: 'wrong user email'});
     }
             else{
                 if(user.password===req.body.password){
-                    res.json({success: true, message: 'sucessful attempt',name:user.name});
+                    res.json({success: true, message: 'successful attempt',name:user.name});
                     
                 }else{
                     res.json({success: false, message: 'unsucessful attempt'});
