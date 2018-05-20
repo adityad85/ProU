@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { TabsPage } from '../tabs/tabs';
-import { HomePage } from '../home/home';
 import { AlertController } from 'ionic-angular';
 
 
@@ -27,7 +26,7 @@ export class LoginPage {
   ionViewDidLoad() {  
     console.log('ionViewDidLoad LoginPage');
   }
-
+  
   login(){
    let loginUser = {
       email: this.email,
@@ -49,7 +48,9 @@ export class LoginPage {
         subTitle: 'Wrong Email or Password',
         buttons: ['DONE']
        });
-       alert.present(); 
+       alert.present();
+       this.email=null;
+       this.password=null;
      }
    });
   

@@ -1,8 +1,8 @@
+import { WelcomePage } from './../welcome/welcome';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
-import { WelcomePage } from '../welcome/welcome';
 import { LoginPage } from '../login/login';
 
 
@@ -31,7 +31,7 @@ export class SettingsPage {
   logout(): void{
     window.localStorage.removeItem('email');
     window.localStorage.removeItem('password');
-   
+    this.app.getRootNav().setRoot(WelcomePage);
 }
   
  
