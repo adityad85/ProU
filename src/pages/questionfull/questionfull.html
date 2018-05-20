@@ -1,0 +1,69 @@
+<!--
+  Generated template for the QuestionfullPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Comments</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+       <ion-item>
+           <ion-avatar item-start>
+               <img src="https://cdn3.iconfinder.com/data/icons/trico-circles-solid/24/Circle-Solid-Profile-512.png">
+             </ion-avatar>
+         <h4>{{parameter.name}}</h4>
+       </ion-item>
+
+       <ion-card-header>
+           {{parameter.category}}
+         </ion-card-header>
+         <ion-card-content>
+             <h2>{{parameter.title}}</h2>
+             <p>{{parameter.description}}</p>
+         </ion-card-content>
+        
+      </ion-card>
+
+       
+        <ion-list *ngFor="let reply of replys">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="https://cdn3.iconfinder.com/data/icons/trico-circles-solid/24/Circle-Solid-Profile-512.png">
+          </ion-avatar>
+          <p>{{reply.name}}</p>
+        </ion-item>
+        <ion-item item-end text-wrap>
+          
+          <p>{{reply.comment}}</p>
+        </ion-item>
+        </ion-list>
+      
+    
+      
+    
+        
+
+</ion-content>
+
+<ion-footer align-title="center" class="bar-balanced"> 
+  <ion-grid no-padding>
+      <ion-row no-padding>
+          <ion-col col-8 no-padding>
+              <ion-item>   
+                  <ion-input type="text" value="" [(ngModel)]= "comment" name="comment" placeholder = "Add Comment"></ion-input>
+                </ion-item>
+          </ion-col>
+          <ion-col col-4 no-padding>
+            <button ion-button (click)="addComment()">Post</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-footer>

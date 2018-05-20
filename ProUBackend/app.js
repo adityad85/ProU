@@ -28,14 +28,23 @@ var Ques = mongoose.model('Ques', {
     title: String,
     description: String,
     category: String,
-    name: String
+    name: String,
+    /*reply: [
+       {comment: String, username: String}
+    ]*/
 });
 
 var User = mongoose.model('User', {
     name: String,
     email: String,
     password: String
-})
+});
+
+var Reply = mongoose.model('Reply',{
+    postID: String,
+    comment: String,
+    name: String
+});
  
 
     app.get('/getQues', function(req, res) {
@@ -76,6 +85,34 @@ var User = mongoose.model('User', {
             });
         });
  
+    });
+
+    app.post('/addcomment', function(req,res){
+         console.log(req.body);
+         Reply.create({
+             name: req.body.name,
+             postID: req.body.postID,
+             comment: req.body.comment
+         }, function(err, reply){
+             if(err){
+                 res.send(err);
+             }else{
+                 res.send(reply);
+             }
+         });
+        
+    });
+
+    app.post('/viewcomment', function(req,res){
+    
+        Reply.find({"postID":req.body.postID},function(err, replys){
+            if(err){
+                res.send(err);
+            }else{
+                console.log(replys);
+                res.json(replys);
+            }
+        })
     });
 
     app.post('/registerUser', function(req, res){

@@ -17,6 +17,7 @@ import { SignupPage} from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { WelcomePage} from '../pages/welcome/welcome';
 import { QuestionPage } from '../pages/question/question';
+import { QuestionfullPage} from '../pages/questionfull/questionfull';
 
 import { PostsProvider } from '../providers/posts/posts';
 import { AuthProvider } from '../providers/auth/auth';
@@ -38,7 +39,8 @@ import { AuthProvider } from '../providers/auth/auth';
     ProfilePage,
     SignupPage,
     WelcomePage,
-    QuestionPage
+    QuestionPage,
+    QuestionfullPage
     
   ],
   imports: [
@@ -59,7 +61,8 @@ import { AuthProvider } from '../providers/auth/auth';
     ProfilePage,
     SignupPage,
     WelcomePage,
-    QuestionPage
+    QuestionPage,
+    QuestionfullPage
     
   ],
   providers: [
