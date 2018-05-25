@@ -1,22 +1,22 @@
 <ion-header>
-    <ion-navbar>
-     <ion-title>
-       Pro-U
-     </ion-title>
-    </ion-navbar>
-   </ion-header>
-    
-   <ion-content>
-    
-      <ion-refresher (ionRefresh)="doRefresh($event)">
-          <ion-refresher-content></ion-refresher-content>
-        </ion-refresher>
-      
-     <ion-list no-lines>
-    
-       <ion-card *ngFor="let ques of quess" (click)="cardOpen(ques)">
-    
-         <!--<ion-item>
+  <ion-navbar>
+    <ion-title>
+      Pro-U
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list no-lines>
+
+    <ion-card *ngFor="let ques of quess" (click)="cardOpen(ques)">
+
+      <!--<ion-item>
     
            <h2>{{ques.title}}</h2>
            <p>{{ques.description}}</p>
@@ -25,23 +25,23 @@
           <p> {{ques.category}}</p>    
          </ion-item>
         -->
-        <ion-item>
-            <ion-avatar item-start>
-                <img src="https://cdn3.iconfinder.com/data/icons/trico-circles-solid/24/Circle-Solid-Profile-512.png">
-              </ion-avatar>
-          <h4>{{ques.name}}</h4>
-        </ion-item>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://cdn3.iconfinder.com/data/icons/trico-circles-solid/24/Circle-Solid-Profile-512.png">
+        </ion-avatar>
+        <h4>{{ques.name}}</h4>
+      </ion-item>
 
-        <ion-card-header>
-            {{ques.category}}
-          </ion-card-header>
-          <ion-card-content>
-              <h2>{{ques.title}}</h2>
-              <p>{{ques.description}}</p>
-          </ion-card-content>
-         
-       </ion-card>
-    
-     </ion-list>
-    
-   </ion-content>
+      <ion-card-header>
+        {{ques.category}}
+      </ion-card-header>
+      <ion-card-content>
+        <h2>{{ques.title}}</h2>
+        <p>{{ques.description}}</p>
+      </ion-card-content>
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>

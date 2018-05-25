@@ -15,11 +15,11 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'questionfull.html',
 })
 export class QuestionfullPage {
-  parameter:any;
-  comment:string;
+  parameter: any;
+  comment: string;
   replys: any;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public authProvider: AuthProvider) {
     this.parameter = navParams.get('data');
@@ -28,29 +28,29 @@ export class QuestionfullPage {
   ionViewDidLoad() {
     console.log(this.parameter);
     this.authProvider.viewComment(this.parameter._id).then((data) => {
-     
+
       this.replys = data;
 
-    }); ;
+    });;
   }
 
-  addComment(){
-   let commentObj = { 
-    comment:this.comment,
-    name:window.localStorage.getItem('name'),
-    postID: this.parameter._id
-   }
- 
-   this.authProvider.addComment(commentObj);
+  addComment() {
+    let commentObj = {
+      comment: this.comment,
+      name: window.localStorage.getItem('name'),
+      postID: this.parameter._id
+    }
 
-   this.authProvider.viewComment(this.parameter._id).then((data) => {
-     
-    this.replys = data;
+    this.authProvider.addComment(commentObj);
 
-    this.comment = null;
+    this.authProvider.viewComment(this.parameter._id).then((data) => {
+
+      this.replys = data;
+
+      this.comment = null;
 
 
-  }); ;
+    });;
 
   }
 

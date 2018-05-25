@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
-import { AuthProvider} from '../../providers/auth/auth';
+import { AuthProvider } from '../../providers/auth/auth';
 import { QuestionfullPage } from '../questionfull/questionfull';
 
 
@@ -21,39 +21,39 @@ export class HomePage {
     console.log('Begin async operation', refresher);
 
     this.authProvider.getQues().then((data) => {
-     
+
       this.quess = data;
-    
+
     });
-  
-    
+
+
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
     }, 2000);
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.authProvider.getQues().then((data) => {
-     
-      this.quess = data;
-    
 
-    }); 
+      this.quess = data;
+
+
+    });
   }
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
 
     this.viewCtrl.showBackButton(false);
- 
+
     this.authProvider.getQues().then((data) => {
-      
+
       this.quess = data;
     });
 
-}
+  }
 
-cardOpen(ques){
-  this.navCtrl.push(QuestionfullPage,{data: ques});
-}
+  cardOpen(ques) {
+    this.navCtrl.push(QuestionfullPage, { data: ques });
+  }
 }
