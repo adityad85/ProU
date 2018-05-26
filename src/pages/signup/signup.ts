@@ -25,8 +25,11 @@ export class SignupPage {
       email:this.email,
       password:this.password
     }
-    this.authProvider.signUp(user);
-    this.navCtrl.pop();
+    this.authProvider.signUp(user).subscribe(data=>{
+      if(data)
+      this.navCtrl.pop();
+    });
+    
     }
 
 }
