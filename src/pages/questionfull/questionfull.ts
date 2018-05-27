@@ -33,22 +33,21 @@ export class QuestionfullPage {
 
     });;
   }
-
+  
   addComment() {
     let commentObj = {
       comment: this.comment,
       name: window.localStorage.getItem('name'),
-      postID: this.parameter._id
+      postID: this.parameter._id,
+      date: new Date()
     }
-
     this.authProvider.addComment(commentObj);
 
     this.authProvider.viewComment(this.parameter._id).then((data) => {
-
       this.replys = data;
 
       this.comment = null;
-
+ 
 
     });;
 

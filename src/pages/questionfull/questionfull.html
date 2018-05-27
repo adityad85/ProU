@@ -20,31 +20,38 @@
                <img src="https://cdn3.iconfinder.com/data/icons/trico-circles-solid/24/Circle-Solid-Profile-512.png">
              </ion-avatar>
          <h4>{{parameter.name}}</h4>
+         <p no-padding item-end>{{parameter.category}}</p> 
+         
        </ion-item>
+       <hr>
 
-       <ion-card-header>
+      <!-- <ion-card-header>
            {{parameter.category}}
-         </ion-card-header>
+         </ion-card-header> -->
+         <br>
          <ion-card-content>
              <h2>{{parameter.title}}</h2>
+             <br>
              <p>{{parameter.description}}</p>
          </ion-card-content>
         
       </ion-card>
 
-       
-        <ion-list *ngFor="let reply of replys">
+       <br>
+        <ion-card *ngFor="let reply of replys" no-lines>
         <ion-item>
           <ion-avatar item-start>
             <img src="https://cdn3.iconfinder.com/data/icons/trico-circles-solid/24/Circle-Solid-Profile-512.png">
           </ion-avatar>
-          <p>{{reply.name}}</p>
+          <h4>{{reply.name}}</h4>
+          <p item-end>{{reply.date}}</p>
         </ion-item>
+        <hr>
         <ion-item item-end text-wrap>
           
           <p>{{reply.comment}}</p>
         </ion-item>
-        </ion-list>
+        </ion-card>
       
     
       
@@ -54,15 +61,15 @@
 </ion-content>
 
 <ion-footer align-title="center" class="bar-balanced"> 
-  <ion-grid no-padding>
-      <ion-row no-padding>
-          <ion-col col-8 no-padding>
+  <ion-grid>
+      <ion-row>
+          <ion-col col-8>
               <ion-item>   
                   <ion-input type="text" value="" [(ngModel)]= "comment" name="comment" placeholder = "Add Comment"></ion-input>
                 </ion-item>
           </ion-col>
-          <ion-col col-4 no-padding>
-            <button ion-button (click)="addComment()">Post</button>
+          <ion-col col-4>
+            <button ion-button style="float:right" (click)="addComment()">Post</button>
           </ion-col>
         </ion-row>
       </ion-grid>
