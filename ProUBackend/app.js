@@ -59,7 +59,8 @@ var User = mongoose.model('User', {
 var Reply = mongoose.model('Reply', {
   postID: String,
   comment: String,
-  name: String
+  name: String,
+  date: Date
 });
 
 
@@ -104,15 +105,17 @@ app.post('/saveQues', function (req, res) {
 });
 
 app.post('/addcomment', function (req, res) {
-  console.log(req.body);
   Reply.create({
     name: req.body.name,
     postID: req.body.postID,
-    comment: req.body.comment
+    comment: req.body.comment,
+    date: req.body.date
   }, function (err, reply) {
     if (err) {
+      
       res.send(err);
     } else {
+      
       res.send(reply);
     }
   });

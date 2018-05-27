@@ -16,7 +16,7 @@ export class AuthProvider {
   loginUser(user) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://139.59.4.95:8080/loginUser', user, { headers: headers }).
+    return this.http.post('http://localhost:8080/loginUser', user, { headers: headers }).
       map(res => res);
   }
 
@@ -24,14 +24,14 @@ export class AuthProvider {
 
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://139.59.4.95:8080/registerUser', user, { headers: headers }).
+    return this.http.post('http://localhost:8080/registerUser', user, { headers: headers }).
       map(res=>res);
   }
 
   saveQuesService(ques) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://139.59.4.95:8080/saveQues', ques, { headers: headers })
+    return this.http.post('http://localhost:8080/saveQues', ques, { headers: headers })
       .subscribe(data => {
 
       });
@@ -42,7 +42,7 @@ export class AuthProvider {
 
     return new Promise(resolve => {
 
-      this.http.get('http://139.59.4.95:8080/getQues')
+      this.http.get('http://localhost:8080/getQues')
         .subscribe(data => {
           this.data = data;
           resolve(this.data);
@@ -55,7 +55,7 @@ export class AuthProvider {
   logOut(user) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    this.http.post('http://139.59.4.95:8080/logout', user, { headers: headers }).subscribe(data => {
+    this.http.post('http://localhost:8080/logout', user, { headers: headers }).subscribe(data => {
 
     })
 
@@ -64,7 +64,7 @@ export class AuthProvider {
 
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://139.59.4.95:8080/addcomment', commentObj, { headers: headers })
+    return this.http.post('http://localhost:8080/addcomment', commentObj, { headers: headers })
       .subscribe(data => {
         console.log(data);
       });
@@ -78,7 +78,7 @@ export class AuthProvider {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return new Promise(resolve => {
-      this.http.post('http://139.59.4.95:8080/viewcomment', paramID, { headers: headers })
+      this.http.post('http://localhost:8080/viewcomment', paramID, { headers: headers })
         .subscribe(data => {
           this.data1 = data;
           resolve(this.data1);

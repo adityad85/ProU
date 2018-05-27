@@ -25,18 +25,24 @@
           <p> {{ques.category}}</p>    
          </ion-item>
         -->
-      <ion-item>
+      <ion-item no-padding>
+        
         <ion-avatar item-start>
           <img src="https://cdn3.iconfinder.com/data/icons/trico-circles-solid/24/Circle-Solid-Profile-512.png">
         </ion-avatar>
-        <h4>{{ques.name}}</h4>
+        {{ques.name}}
+       
+        <h2 no-padding item-end>{{ques.category}}</h2> 
+        
       </ion-item>
+      <hr>
 
-      <ion-card-header>
+      <!--<ion-card-header>
         {{ques.category}}
-      </ion-card-header>
+      </ion-card-header>-->
       <ion-card-content>
         <h2>{{ques.title}}</h2>
+        <br> 
         <p>{{ques.description}}</p>
       </ion-card-content>
 
